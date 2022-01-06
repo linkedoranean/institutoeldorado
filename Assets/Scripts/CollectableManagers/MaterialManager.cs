@@ -2,22 +2,20 @@ using UnityEngine;
 
 public class MaterialManager : MonoBehaviour
 {
-    public delegate void RaycastAction();
-    public static event RaycastAction OnHighlighted;
-    public static event RaycastAction OnUnhighlighted;
-
+    private CollectableManager _collectableManager;
+    
     private void Start()
     {
-        
+        _collectableManager = GetComponent<CollectableManager>();
     }
 
     public void ChangeToHighlighted()
     {
-        OnHighlighted?.Invoke();
+        _collectableManager.OnHighlight();
     }
     
     public void ChangeToUnhighlighted()
     {
-        OnUnhighlighted?.Invoke();
+        _collectableManager.OnUnhighlight();
     }
 }

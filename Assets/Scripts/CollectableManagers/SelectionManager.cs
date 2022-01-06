@@ -2,22 +2,20 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    public delegate void MouseAction();
-    public static event MouseAction OnSelected;
-    public static event MouseAction OnDiscarded;
-
+    private CollectableManager _collectableManager;
+    
     private void Start()
     {
-        
+        _collectableManager = GetComponent<CollectableManager>();
     }
 
     public void OnSelect()
     {
-        OnSelected?.Invoke();
+        _collectableManager.OnSelect();
     }
     
     public void OnDiscard()
     {
-        OnDiscarded?.Invoke();
+        _collectableManager.OnDiscard();
     }
 }
