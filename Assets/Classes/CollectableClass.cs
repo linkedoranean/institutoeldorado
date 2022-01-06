@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class CollectableClass
@@ -8,4 +10,6 @@ public class CollectableClass
     
     public MeshRenderer collectableMesh;
     public BoxCollider collectableBC;
+
+    public Button relatedButton;
 }
