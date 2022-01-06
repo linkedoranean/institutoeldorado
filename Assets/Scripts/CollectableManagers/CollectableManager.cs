@@ -14,6 +14,7 @@ public class CollectableManager : MonoBehaviour
     {
         _collectableClass.collectableBC.enabled = false;
         _collectableClass.collectableMesh.enabled = false;
+        _collectableClass.relatedButton.GetComponent<AddItem>().OnAddItem();
     }
 
     public void OnDiscard()

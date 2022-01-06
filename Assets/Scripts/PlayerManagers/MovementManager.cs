@@ -9,6 +9,7 @@ public class MovementManager : MonoBehaviour
     private Vector3 move;
 
     [SerializeField] private CharacterController charController;
+    [SerializeField] private MenuManager menuManager;
     
     void Start()
     {
@@ -17,11 +18,14 @@ public class MovementManager : MonoBehaviour
 
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
+        if (!menuManager.pause)
+        {
+            x = Input.GetAxis("Horizontal");
+            z = Input.GetAxis("Vertical");
 
-        move = transform.right * x + transform.forward * z;
+            move = transform.right * x + transform.forward * z;
 
-        charController.Move(move * speed * Time.deltaTime);
+            charController.Move(move * speed * Time.deltaTime);
+        }
     }
 }

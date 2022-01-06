@@ -7,6 +7,8 @@ public class HighlightRaycastManager : MonoBehaviour
     public float raySize;
 
     [SerializeField] private GameObject hittedObj;
+    [SerializeField] private SpriteRenderer aim;
+    [SerializeField] private Sprite[] aimIcons;
 
     private int layerMask;
     RaycastHit hit;
@@ -22,6 +24,7 @@ public class HighlightRaycastManager : MonoBehaviour
         {
             hittedObj = hit.transform.gameObject;
             hittedObj.GetComponent<MaterialManager>().ChangeToHighlighted();
+            aim.sprite = aimIcons[1];
             
 #if UNITY_EDITOR
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
@@ -32,6 +35,7 @@ public class HighlightRaycastManager : MonoBehaviour
         {
             if (hittedObj != null)
             {
+                aim.sprite = aimIcons[0];
                 hittedObj.GetComponent<MaterialManager>().ChangeToUnhighlighted();
                 hittedObj = null;
             }
